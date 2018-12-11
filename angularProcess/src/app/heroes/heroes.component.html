@@ -1,0 +1,33 @@
+<h2>My Heroes</h2>
+<!-- <h2>{{hero.name | uppercase}} Details</h2> -->
+<!-- {{object | formate}} 管道操作符(|), 管道是格式化字符串、金额、日期和其他显示数据的好办法, 也可创建自己的管道-->
+<!-- <div>
+  <span>id: </span>{{hero.id}}
+</div>
+<div>
+  <label>name: 
+    <input [(ngModel)]="hero.name" placeholder="name">
+  </label>
+</div> -->
+
+<ul class="heroes">
+  <li *ngFor="let hero of heroes"
+  [class.selected]="hero === selectedHero"
+  (click)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+
+<!-- <div *ngIf="selectedHero">
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+  <div>
+    <span>id</span>{{selectedHero.id}}
+  </div>
+  <div>
+    <label>name: 
+      <input [(ngModel)]="selectedHero.name" placeholder="name">
+    </label>
+  </div>
+
+</div> -->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
