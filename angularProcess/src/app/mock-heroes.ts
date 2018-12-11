@@ -8,5 +8,6 @@ export const HEROES: Hero[] = [
   { id: 10003, name: '李麻子' },
   { id: 10004, name: '周建国' },
   { id: 10005, name: '胡翠花' },
-  { id: 10006, name: '网泥马' }
+  { id: 10006, name: '网泥马' },
+  { id: 10007, name: 'Undefined' }
 ];
