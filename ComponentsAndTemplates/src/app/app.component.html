@@ -1,0 +1,104 @@
+<h1>{{title}}</h1>
+<h2>My favorite hero is {{myHero.name}}</h2>
+<p *ngIf="heroes.length > 3">There are many heroes! </p>
+<ul>
+  <li *ngFor="let hero of heroes">
+    {{ hero.name }}
+  </li>
+</ul>
+<!-- 绑定到用户输入事件 -->
+<button (click)="onClickMe()">Click Me</button>
+{{ clickMessage }}<br>
+<!-- 通过$event对象取得用户输入 -->
+<span>
+  try to write something in the below inputbox.
+</span>
+<input (keyup)="onKey($event)">
+<p>{{ values }}</p>
+<!-- 从一个模板引用变量中获得用户输入 -->
+<input #box (keyup)="0">
+<p>{{box.value}}</p>
+
+<input #box1 (keyup)="onKey1(box1.value)">
+<p>{{values}}</p>
+<!-- 按键事件过滤（通过 key.enter） -->
+<div>
+  <p>Type away! Press [enter] when done</p>
+  <input #boxEnter (keyup.enter)="onEnter(boxEnter.value)">
+  <p>{{valueEnter}}</p>
+</div>
+<!-- 失去焦点事件 (blur) -->
+<div>
+  <span>失去焦点事件 (blur)</span>
+  <input #boxBlur 
+  (keyup.enter)="update(boxBlur.value)"
+  (blur)="update(boxBlur.value)">
+  <p>{{valueBlur}}</p>
+</div>
+
+<div>
+  <input #newHero
+  (keyup.enter)="addHero(newHero.value)"
+  (blur)="addHero(newHero.value); newHero.value=''">
+  <button (click)="addHero(newHero.value)">Add</button>
+  <ul>
+      <li *ngFor="let hero of heroes1">
+        {{ hero }}
+      </li>
+    </ul>
+</div>
+
+<!-- 组件交互（Component Interaction） -->
+<!-- <div>
+  <p>组件交互（Component Interaction）</p>
+  <h3>{{ hero.name }} says: </h3>
+  <p>I, {{ hero.name }}, am at your service, {{ masterName }}</p>
+</div> -->
+
+<div>
+  <app-ad-banner [ads]="ads"></app-ad-banner>
+</div>
+<!-- 属性型指令Attribute Directives -->
+<div>
+  <p>属性型指令Attribute Directives</p>
+  <!-- <p appHighlight>Highlight me!</p>
+  <p appHighlight [highlightColor]="'orange'">Highlighted in orange</p>
+  <p appHighlight [highlightColor]="color">Highlight with parent component's color</p> -->
+</div>
+
+<div>
+  <h1>My First Attribute Directive</h1>
+  <h4>Pick a highlight color</h4>
+  <div>
+    <input type="radio" name="colors" (click)="color='lightgreen'">Green
+    <input type="radio" name="colors" (click)="color='yellow'">yellow
+    <input type="radio" name="colors" (click)="color='cyan'">Cyan
+  </div>
+  <p [appHighlight]="color">Highlight me!</p>
+  <p [appHighlight]="color" defaultColor="violet">Highlight me too!</p>
+</div>
+
+<!-- 结构型指令Structural Directivies -->
+<div>
+  <p>结构型指令Structural Directivies </p>
+<!--   <div [ngSwitch]="hero?.emotion">
+    <app-happy-hero *ngSwitchCase="'happy'" [hero]="hero"></app-happy-hero>
+    <app-sad-hero *ngSwitchCase="'sad'" [hero]="hero"></app-sad-hero>
+    <app-confused-hero *ngSwitchCase="'app-confused'" [hero]="hero"></app-confused-hero>
+    <app-unknown-hero *ngSwitchDefaul [hero]="hero"></app-unknown-hero>
+  </div> -->
+</div>
+
+<!-- NgIf ngIf案列 -->
+<div>
+  <p>NgIf 是一个很好的结构型指令案例：它接受一个布尔值，并据此让一整块 DOM 树出现或消失。</p>
+  <p>ngIf 指令并不是使用 CSS 来隐藏元素的。它会把这些元素从 DOM 中物理删除。 使用浏览器的开发者工具就可以确认这一点。</p>
+</div>
+<div *ngIf="false">
+  <p>NgIf案列</p>
+  <p>NgIf 是一个很好的结构型指令案例：它接受一个布尔值，并据此让一整块 DOM 树出现或消失。</p>
+</div>
+<div *ngIf="true">
+  <p>ngIf案列</p>
+  <p>ngIf 指令并不是使用 CSS 来隐藏元素的。它会把这些元素从 DOM 中物理删除。 使用浏览器的开发者工具就可以确认这一点。</p>
+</div>
